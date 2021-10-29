@@ -34,6 +34,7 @@ Even if you do not need the automated log creation feature, the plugin still has
 - Supports the ability to [create daily log files for other days besides today](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Creating-Past-Log-Files)
 - [Interoperability](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Interoperability-with-the-Daily-Notes-core-plugin) with the "Daily notes" core plugin
 - Future: Supports a cutoff time for those that work late at night
+- Future: Log Chains, a tool to set up a whole series of automated log events to pull data into your daily log
 
 &nbsp;
 ## More Details
