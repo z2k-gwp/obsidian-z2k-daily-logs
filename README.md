@@ -38,4 +38,5 @@ Even if you do not need the automated log creation feature, the plugin still has
 
 &nbsp;
 ## More Details
-More details on the plugin configuration and examples can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki).
+- More details on the plugin configuration and examples can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki).
+- Protecting one's privacy is "Job Number One" in Z2K plugins and tools. Read our [privacy mission statement](https://github.com/z2k-gwp/
