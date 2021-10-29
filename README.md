@@ -6,8 +6,8 @@ This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through 
 - Includes a number of methods by which a daily note/log file can be created automatically each day
 - Support for creating log files other than for the current day
 - Support for a wider variety of automated {{field}} names
-- (Future) Support for fast acess to the daily log file through a variety of means (e.g. URI, shortcuts, hotkeys)
-- (Future) Support for quick insertion of logging information into the curren daily log (e.g. URI, shortcuts, hotkeys)
+- (Future:) Support for fast acess to the daily log file through a variety of means (e.g. URI, shortcuts, hotkeys)
+- (Future:) Support for quick insertion of logging information into the curren daily log (e.g. URI, shortcuts, hotkeys)
 
 Full documentation can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki).
 Protecting one's privacy is "Job Number One" in Z2K plugins and tools. Read our [privacy mission statement](https://github.com/z2k-gwp/z2k-gwp/blob/main/Privacy.md)
@@ -30,14 +30,15 @@ The plugin supports [a number of ways](https://github.com/z2k-gwp/obsidian-z2k-d
 - Automatically upon [Obsidian startup](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Startup-Trigger)
 - Use the Obsidian [command interface](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Command-Trigger) (e.g. assigned command to a hotkey)
 - Use the plugin's [ribbon](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Ribbon-Trigger) button
+- (Future:) Create tomorrow's daily login ahead of time with many of the above methods
 
 #### - **Other Features**
 Even if you do not need the automated log creation feature, the plugin still has several additional features that can be of use:
 - Supports [additional premade {{fields}} for autoreplacement](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) (e.g. `timestamp`, `dayOfWeek`, `weekNum`)
 - Supports the ability to [create daily log files for other days besides today](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Creating-Past-Log-Files)
 - [Interoperability](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Interoperability-with-the-Daily-Notes-core-plugin) with the "Daily notes" core plugin
-- Future: Supports a cutoff time for those that work late at night
-- Future: Log Chains, a tool to set up a whole series of automated log events to pull data into your daily log
+- (Future:) Supports a cutoff time for those that work late at night
+- (Future:) Log Chains, a tool to set up a whole series of automated log events to pull data into your daily log as part of the automated systems. This gets you one step closer to a fully automated Quantified Self.
 
 &nbsp;
 ## More Details
