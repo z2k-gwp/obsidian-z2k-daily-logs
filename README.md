@@ -1,20 +1,21 @@
-## Z2K Log Creator - Obsidian plugin
+## Z2K Daily Logs - An Obsidian plugin
 
 ### Overview
-This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through a variety of means. It behaves similar to the core "Daily notes" plugin, but extends it with several new features:
+This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through a variety of means. It behaves similar to the core "Daily notes" plugin (or Liam's excellent "Periodic Notes" plugin), but extends it with several new features:
 
 - Includes a number of methods by which a daily note/log file can be created automatically each day
 - Support for creating log files other than for the current day
 - Support for a wider variety of automated {{field}} names
+- (Future) Support for fast acess to the daily log file through a variety of means (e.g. URI, shortcuts, hotkeys)
+- (Future) Support for quick insertion of logging information into the curren daily log (e.g. URI, shortcuts, hotkeys)
 
 Full documentation can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki).
-
 Protecting one's privacy is "Job Number One" in Z2K plugins and tools. Read our [privacy mission statement](https://github.com/z2k-gwp/z2k-gwp/blob/main/Privacy.md)
 
-*Aside: While it is intended for use as part of the larger [Z2K](https://z2k.dev) System, it can be used in ordinary Obsidian vaults as well. In the Z2K System, the "daily note" is called the "daily log", and thus this documentation uses "daily log" name instead.*
+*Aside: While this plugin is intended for use as part of the larger [Z2K System](https://z2k.dev), it can be [used in ordinary Obsidian vaults](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Using-this-plugin-outside-of-Z2K) as well.*
 
 &nbsp;
-### Why not just use the core "Daily notes" plugin? How is this different?
+### What is the difference between a Daily Note and a Daily Log?
 
 #### - **Automated Log Creation**
 Many people use a daily note to not just hold informational notes, but also data logging for their daily lives. For instance, some Obsidian users use the daily note/log to hold [Quantified Self](https://en.wikipedia.org/wiki/Quantified_self) data from their phones, smart watches, the web, and their custom sensors. This data can come from a variety of external apps at any time. The Z2K System itself incorporates data logging into its process.
