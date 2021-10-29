@@ -14,9 +14,9 @@ Protecting one's privacy is "Job Number One" in Z2K plugins and tools. Read our 
 *Aside: While it is intended for use as part of the larger [Z2K](https://z2k.dev) System, it can be used in ordinary Obsidian vaults as well. In the Z2K System, the "daily note" is called the "daily log", and thus this documentation uses "daily log" name instead.*
 
 &nbsp;
-## Why use this plugin instead of the core "Daily notes" plugin?
+### Why not just use the core "Daily notes" plugin? How is this different?
 
-### **Automated Log Creation**
+#### - **Automated Log Creation**
 Many people use a daily note to not just hold informational notes, but also data logging for their daily lives. For instance, some Obsidian users use the daily note/log to hold [Quantified Self](https://en.wikipedia.org/wiki/Quantified_self) data from their phones, smart watches, the web, and their custom sensors. This data can come from a variety of external apps at any time. The Z2K System itself incorporates data logging into its process.
 
 In order for data logging to work, it is useful to have each day's log file to be ready for use at the start of the day, perhaps before you have even had the chance to load Obsidian directly. For instance, if you are logging the weather or your sleep time into your log file automatically in the morning, you'll need the daily log file to be already created and ready to receive the data the moment you wake up. 
@@ -30,7 +30,7 @@ The plugin supports [a number of ways](https://github.com/z2k-gwp/obsidian-z2k-d
 - Use the Obsidian [command interface](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Command-Trigger) (e.g. assigned command to a hotkey)
 - Use the plugin's [ribbon](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Ribbon-Trigger) button
 
-### **Other Features**
+#### - **Other Features**
 Even if you do not need the automated log creation feature, the plugin still has several additional features that can be of use:
 - Supports [additional premade {{fields}} for autoreplacement](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) (e.g. `timestamp`, `dayOfWeek`, `weekNum`)
 - Supports the ability to [create daily log files for other days besides today](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Creating-Past-Log-Files)
