@@ -13,7 +13,7 @@ This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through 
 - (Future:) Log Chains, a tool to set up a whole series of automated log events to pull data into your daily log as part of the automated systems. This gets you one step closer to a fully automated Quantified Self.
 
 ### More Info
-- Note: Full documentation can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki)
+- **Full documentation can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki)**
 - Aside: While this plugin is intended for use as part of the larger [Z2K System](https://z2k.dev), it can be [used in ordinary Obsidian vaults](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Using-this-plugin-outside-of-Z2K) as well.
 - Protecting one's privacy is "Job Number One" in Z2K plugins and tools. Read our [privacy mission statement](https://github.com/z2k-gwp/z2k-gwp/blob/main/Privacy.md)
 
@@ -24,7 +24,7 @@ Many people use a daily note to not just hold informational notes, but also data
 In order for data logging to work, it is useful to have each day's log file to be ready for use at the start of the day, perhaps before you have even had the chance to load Obsidian directly. For instance, if you are logging the weather or your sleep time into your log file automatically in the morning, you'll need the daily log file to be already created and ready to receive the data the moment you wake up. 
 
 &nbsp;
-### - **Automated Log Creation**
+### Automated Log Creation
 This plugin allows exactly for that usage model by providing several failsafe methods that can be used together to ensure that the log file is ready to received automated data, even before you start the day.
 
 The plugin supports [a number of ways](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Sample-Log-Creation-Triggers) to trigger creating the daily log file, including: 
