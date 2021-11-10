@@ -5,9 +5,9 @@ This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through 
 
 - Includes a number of methods by which a daily note/log file can be created automatically each day
 - Support for creating log files other than for the current day
-- Support for a wider variety of automated {{field}} names
-- (Future:) Support for fast acess to the daily log file through a variety of means (e.g. URI, shortcuts, hotkeys)
-- (Future:) Support for quick insertion of logging information into the curren daily log (e.g. URI, shortcuts, hotkeys)
+- Support for a wider variety of automated `{{field}}` names
+- (Future:) Support for fast access to the daily log file through a variety of means (e.g. URI, shortcuts, hotkeys)
+- (Future:) Support for quick insertion of logging information into the current daily log (e.g. URI, shortcuts, hotkeys)
 
 Full documentation can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki).
 Protecting one's privacy is "Job Number One" in Z2K plugins and tools. Read our [privacy mission statement](https://github.com/z2k-gwp/z2k-gwp/blob/main/Privacy.md)

@@ -14,10 +14,14 @@
 // 
 
 // 3rd Party Imports
-import type moment from "moment"; // Just import the type from obsidian
+import type { Moment } from "moment";
+
 
 // Obsidian Imports
-import { App, Plugin, Editor, MarkdownView, Notice } from "obsidian";
+import { App, Plugin, Editor, MarkdownView, Notice, TFile } from "obsidian";
+
+// Obsidian Third Party Plugins
+import { appHasDailyNotesPluginLoaded, getDailyNoteSettings } from "obsidian-daily-notes-interface";
 
 // Internal Plugin Imports
 import { showContextMenu } from "./ui";
@@ -32,7 +36,7 @@ import { capitalize }  from "./utils";
 declare global {
     interface Window {
       app: App;
-      moment: typeof moment;
+      moment: Moment;
     }
   }
 
@@ -109,9 +113,9 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 		this.configureCommands();
 
 		// So some action for your plugin
-		if (this.settings.doMyMainJobOnStartup) { 
+		if (this.settings.createLogOnStartup) { 
 			const moment = (window as any).moment(Date.now());
-			var dailyNote = await this.MyMainJob(moment);
+			var dailyNote = await this.cmdCreateZ2KDailyLog(moment);
 		}
 	}
 
@@ -135,15 +139,15 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 			// Default icons: 'logo-crystal', 'create-new', 'trash', 'search', 'right-triangle', 'document', 'folder', 'pencil', 'left-arrow', 'right-arrow', 'three-horizontal-bars', 'dot-network', 'audio-file', 'image-file', 'pdf-file', 'gear', 'documents', 'blocks', 'go-to-file', 'presentation', 'cross-in-box', 'microphone', 'microphone-filled', 'two-columns', 'link', 'popup-open', 'checkmark', 'hashtag', 'left-arrow-with-tail', 'right-arrow-with-tail', 'lines-of-text', 'vertical-three-dots', 'pin', 'magnifying-glass', 'info', 'horizontal-split', 'vertical-split', 'calendar-with-checkmark', 'sheets-in-box', 'up-and-down-arrows', 'broken-link', 'cross', 'any-key', 'reset', 'star', 'crossed-star', 'dice', 'filled-pin', 'enter', 'help', 'vault', 'open-vault', 'paper-plane', 'bullet-list', 'uppercase-lowercase-a', 'star-list', 'expand-vertically', 'languages', 'switch', 'pane-layout', 'install'
 			this.ribbonEl = this.addRibbonIcon(
 				'bullet-list', 
-				'Z2K Plugin Template Large', 
+				"Create Today's Z2K Daily Log", 
 				async (evt: MouseEvent) => {
 					// Called when the user clicks the icon.
 					const moment = (window as any).moment(Date.now());
-					var dailyNote = await this.MyMainJob(moment);
+					var dailyNote = await this.cmdCreateZ2KDailyLog(moment);
 				});
 
 			// Provide a class to the ribbon button in case someone wants to modify it with CSS (e.g. to hide)
-			this.ribbonEl.addClass('z2k-template-Large-ribbon-class');
+			this.ribbonEl.addClass('z2k-daily-log-ribbon-class');
 
 			// If we want to add a right-click context menu, here is how periodic notes did it:
 			// this.ribbonEl.addEventListener("contextmenu", (ev: MouseEvent) => {
@@ -169,28 +173,41 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 
 		// Add a command to trigger creating the daily log
 		this.addCommand({
-			id: 'create-Z2K-daily-log',
+			id: 'z2k-logs-create-Z2K-daily-log',
 			name: "Create today's daily log",
 			callback: async () => {
 				const currentMoment = (window as any).moment(Date.now());
-				var dailyNote = this.MyMainJob(currentMoment);
+				var dailyNote = this.cmdCreateZ2KDailyLog(currentMoment);
 			}
 		});
 
 		// Add a command to trigger creating the daily log - for a different day based on what text is currently selected
 		this.addCommand({
-			id: 'create-Z2K-daily-log-for-selection',
+			id: 'z2k-logs-create-Z2K-daily-log-for-selection',
 			name: "Create a daily log for the date selected in the editor",
 			editorCallback: async (editor: Editor, view: MarkdownView) => {
 				let editorMoment = (window as any).moment(editor.getSelection());
 				if (editorMoment.IsValid()) { 
-					let result = await this.MyMainJob(editorMoment);
+					let result = await this.cmdCreateZ2KDailyLog(editorMoment);
 					editor.replaceSelection("[[" + result + "]]");	
 				} else {
 					new Notice("Could not figure out a date from the selected text.")
 				}
 			}
 		});
+
+
+		// Add a command to validate Z2K compliance in settings
+		this.addCommand({
+			id: 'z2k-logs-validate-z2k-settings',
+			name: "Validate that Settings are Z2K Compliant",
+			callback: async () => {
+				const currentMoment = (window as any).moment(Date.now());
+				this.cmdValidateZ2KConsistency();
+			}
+		});
+
+
 	}	
 
 
@@ -238,26 +255,127 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 
 
 	/* ------------------------------------------------------------------------------------------------------ */
-	// MyMainJob
+	// cmdCreateZ2KDailyLog
 	/* ------------------------------------------------------------------------------------------------------ */
 	/**
-	 * This function performs the main work for the plugin. 
+	 * This function creates a daily note for the day. It uses the settings from the "Daily Notes" core 
+	 * plugin to figure out where to save it. 
 	 * 
 	 * @remarks
-	 * - This will need some fleshing.
+	 * - If the note already exists, it simply returns quietly, passing the file handle to the existing note.
+	 * 
+	 * @example // Tip: to call on today's note:
+	 *      const moment = (window as any).moment(Date.now());
+	 *      let dailyNote = cmdCreateZ2KDailyLog(moment)
 	 * 
 	 * @param  {Moment} dateToCreate - a Moment variable representing the day to create
 	 * @returns Promise - Filehandle to the actual note
 	 */
-	async MyMainJob(dateToCreate: moment.Moment): Promise<Boolean> { 
+	 async cmdCreateZ2KDailyLog(dateToCreate: Moment): Promise<TFile> { 
+
+		let createdDailyNote = false;
 
 		// Sanity Checks
-		if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": MyMainJob() - Entered"); }
+		if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdCreateZ2KDailyLog() - Entered"); }
 
-		// and so on...
+		// Get the daily note, and if not there, then create it
 
-		return true;
+		/*
+		if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdCreateZ2KDailyLog() - Check for previously created log file for the day."); }
+		const allDailyNotes = getAllDailyNotes();  // Daily Notes routines like to work off of a cache - this fetches the cache
+		let dailyNote = getDailyNote(dateToCreate, allDailyNotes);
+		if (dailyNote == null) {
+			if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdCreateZ2KDailyLog() - Creating new log file for the day."); }
+			dailyNote = await createDailyNote(dateToCreate);
+			if (dailyNote !== undefined) {
+				createdDailyNote = true;
+			}
+		}
+
+		// Now flesh out the fields. This saves the file when done.
+		if (dailyNote != null) {
+			if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": createLogOnStartup() - Fleshing out automated fields."); }
+			var success = await this.fleshOutDailyNoteAutomatedFields(dateToCreate,dailyNote);
+		}
+		*/
+
+
+		// Reminder:
+		// console.log("Basename: " + dailyNote.basename);	// 2021-10-24
+		// console.log("Name: " + dailyNote.name);			// 2021-10-24.md
+		// console.log("Path: " + dailyNote.path);			// ~Logs/2021/2021-10-24.md
+
+
+		// return dailyNote;
+		return null;
 	}
+
+
+
+	/* ------------------------------------------------------------------------------------------------------ */
+	// cmdValidateZ2KConsistency
+	/* ------------------------------------------------------------------------------------------------------ */
+	/**
+	 * This function validates that the current plugin settings are "Z2K Compliant" - i.e. map into typical 
+	 * Z2K configurations
+	 * 
+	 */
+	 async cmdValidateSettingsAndZ2KConsistency(): Promise<void> { 
+
+		if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdValidateZ2KConsistency() - Checking for Z2K Consistency in Settings"); }
+	
+		const { format, folder, template} = this.settings.dailyNotesSettings;
+
+		// TODO: RequiredFolder needs fixing to support YYYY
+		const requiredFormat = "YYYY-MM-DD", requiredFolder = "~Logs/YYYY", requiredTemplate = "~Templates/~Logs - Daily";
+
+		// Validate Z2K Consistency
+		let errorMessages = "";
+		if ((format != requiredFormat) && (format != "")) {
+			errorMessages += "The Date Format is not Z2K compliant. It should be '" + requiredFormat + "', but is currently '" + format + "'\n";
+		}
+		if (folder != requiredFolder) {
+			errorMessages += "The New File Location is not Z2K compliant. It should be '"+ requiredFolder +"', but is currently '" + folder + "'\n";
+		}
+		if (template != requiredTemplate) {
+			errorMessages += "The Template file Location is not Z2K compliant. It should be '"+ requiredTemplate +"', but is currently '" + template + "'\n";
+		}
+		if (errorMessages != "") {
+			// Could use alert, but Notice is less obtrusive
+			new Notice("The Daily Notes core plugin's settings are not Z2K Compliant:\n\n" + errorMessages);
+		} else {
+			new Notice("Success! Settings have been Validated as Z2K Compliant.");
+		}
+
+		// Validate Folder Exists
+
+		// Validate Template File Exists
+
+	 }
+
+
+	/* ------------------------------------------------------------------------------------------------------ */
+	// cmdCopySettingsFromDailyNotesPlugin
+	/* ------------------------------------------------------------------------------------------------------ */
+	/**
+	 * This function copies the settings from the "Daily Notes" plugin
+	 * 
+	 * @returns Promise to a Boolean - True if the Daily Notes settings were successfully found and copy, False if not
+	 */
+	 async cmdCopySettingsFromDailyNotesPlugin(): Promise<Boolean> { 
+
+		if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdCopySettingsFromDailyNotesPlugin() - Copying Settings from Daily Notes Plugin"); }
+	
+		if (!appHasDailyNotesPluginLoaded()) {
+			new Notice("The Daily Notes core plugin is currently not loaded - and thus the plugin is unable to import the settings.");
+			return false;
+		}
+
+		this.settings.dailyNotesSettings = getDailyNoteSettings();
+
+		new Notice("Success! Settings from the Daily Notes plugin have been imported.");
+		
+	 }
 
 
 }
