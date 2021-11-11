@@ -8,7 +8,7 @@ This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through 
 - Supports [additional premade {{fields}} for autoreplacement](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) (e.g. `timestamp`, `dayOfWeek`, `weekNum`)
 - Supports [more advanced log file naming conventions](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Advanced-File,-Folder-and-Template-Naming) with the `{{dateFormat:}}` field (e.g. have yearly subfolders, have daily log+notes simultaneously, have templates for each day of the week)
 - (Future:) Support for fast access to the daily log file through a variety of means (e.g. URI, shortcuts, hotkeys)
-- (Future:) Support for quick insertion of logging information into the current daily log (e.g. URI, shortcuts, hotkeys) (ala Lumberjack)
+- (Future:) Support for quick insertion/appending of logging information into the current daily log (e.g. URI, shortcuts, hotkeys) (ala Lumberjack)
 - (Future:) Supports a cutoff time for those that work late at night
 - (Future:) Log Chains, a tool to set up a whole series of automated log events to pull data into your daily log as part of the automated systems. This gets you one step closer to a fully automated Quantified Self.
 
@@ -16,6 +16,7 @@ This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through 
 - **Full documentation can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki)**
 - Aside: While this plugin is intended for use as part of the larger [Z2K System](https://z2k.dev), it can be [used in ordinary Obsidian vaults](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Using-this-plugin-outside-of-Z2K) as well.
 - Protecting one's privacy is "Job Number One" in Z2K plugins and tools. Read our [privacy mission statement](https://github.com/z2k-gwp/z2k-gwp/blob/main/Privacy.md)
+- Many thanks to [people](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) who directly or indirectly contributed to this plugin
 
 &nbsp;
 ### What is the difference between a Daily Note and a Daily Log?
@@ -25,7 +26,7 @@ In order for data logging to work, it is useful to have each day's log file to b
 
 &nbsp;
 ### Automated Log Creation
-This plugin allows exactly for that usage model by providing several failsafe methods that can be used together to ensure that the log file is ready to received automated data, even before you start the day.
+This plugin allows exactly for that automated logging usage model by providing several failsafe methods that can be used together to ensure that the log file is ready to received automated data, even before you start the day.
 
 The plugin supports [a number of ways](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Sample-Log-Creation-Triggers) to trigger creating the daily log file, including: 
 - Set the plugin to automatically create the log file at a [given time](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Time-Trigger)
