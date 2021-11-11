@@ -16,7 +16,7 @@ This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through 
 - **Full documentation can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki)**
 - Aside: While this plugin is intended for use as part of the larger [Z2K System](https://z2k.dev), it can be [used in ordinary Obsidian vaults](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Using-this-plugin-outside-of-Z2K) as well.
 - Protecting one's privacy is "Job Number One" in Z2K plugins and tools. Read our [privacy mission statement](https://github.com/z2k-gwp/z2k-gwp/blob/main/Privacy.md)
-- Many thanks to [people](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) who directly or indirectly contributed to this plugin
+- Many thanks to [people](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki#gratitude) who directly or indirectly contributed to this plugin
 
 &nbsp;
 ### What is the difference between a Daily Note and a Daily Log?
