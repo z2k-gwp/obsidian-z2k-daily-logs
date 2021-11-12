@@ -1,3 +1,5 @@
+![Under Development](https://img.shields.io/badge/under-development-orange.svg)
+
 ## Z2K Daily Logs - An Obsidian plugin
 
 ### Overview
