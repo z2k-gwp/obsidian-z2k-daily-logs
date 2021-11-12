@@ -3,10 +3,16 @@
 ## Z2K Daily Logs - An Obsidian plugin
 
 ### Overview
-This [Obsidian](https//obsidian.md) plugin creates a "daily log" file through a variety of means. It behaves similar to the core "Daily notes" plugin (or Liam's excellent "Periodic Notes" plugin), but extends it with several new features:
+This [Obsidian](https//obsidian.md) plugin creates and maintains daily log files for your Obsidian vault. It supercharges the concept of a Daily Note to be a data sink for everything happening each day. 
+
+Conceptually, it combines features found in [Liam Cain](https://github.com/liamcain)'s Daily Notes plugin (or Liam's excellent "Periodic Notes" plugin), [Ryan Murphy](https://github.com/ryanjamurphy)'s [Lumberjack](https://github.com/ryanjamurphy/lumberjack-obsidian) plugin, and [Vinzent03](https://github.com/Vinzent03)'s [Advanced URI](https://github.com/Vinzent03/obsidian-advanced-uri) plugin. And then adds in a number of new features to really embrace the Daily Log concept. 
+
+&nbsp;
+## What does this Plugin _Do_?
+The Daily Logs plugin has the following features:
 
 - **Daily Log Creation**:
-   - Includes a [a number of ways](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Log-Creation-Triggers) by which a daily note/log file can be created automatically each day
+   - Includes [a wide number of methods](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Log-Creation-Triggers) to automatically create the daily log file each day
    - Supports the ability to [create daily log files for other days besides today](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Creating-Past-Log-Files)
    - Supports [additional premade {{fields}} for autoreplacement](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) (e.g. `timestamp`, `dayOfWeek`, `weekNum`)
    - Supports [more advanced log file naming conventions](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Advanced-File,-Folder-and-Template-Naming) with the `{{date:}}` field (e.g. have yearly subfolders, have daily log+notes simultaneously, have templates for each day of the week)
