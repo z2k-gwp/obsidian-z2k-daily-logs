@@ -1,16 +1,21 @@
 ## Z2K Daily Logs - An Obsidian plugin
 
 ### Overview
-This [Obsidian](https//obsidian.md) plugin creates a "daily notes" file through a variety of means. It behaves similar to the core "Daily notes" plugin (or Liam's excellent "Periodic Notes" plugin), but extends it with several new features:
+This [Obsidian](https//obsidian.md) plugin creates a "daily log" file through a variety of means. It behaves similar to the core "Daily notes" plugin (or Liam's excellent "Periodic Notes" plugin), but extends it with several new features:
 
-- Includes a number of methods by which a daily note/log file can be created automatically each day
-- Supports the ability to [create daily log files for other days besides today](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Creating-Past-Log-Files)
-- Supports [additional premade {{fields}} for autoreplacement](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) (e.g. `timestamp`, `dayOfWeek`, `weekNum`)
-- Supports [more advanced log file naming conventions](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Advanced-File,-Folder-and-Template-Naming) with the `{{dateFormat:}}` field (e.g. have yearly subfolders, have daily log+notes simultaneously, have templates for each day of the week)
-- (Future:) Support for fast access to the daily log file through a variety of means (e.g. URI, shortcuts, hotkeys)
-- (Future:) Support for quick insertion/appending of logging information into the current daily log (e.g. URI, shortcuts, hotkeys) (ala Lumberjack)
-- (Future:) Supports a cutoff time for those that work late at night
-- (Future:) Log Chains, a tool to set up a whole series of automated log events to pull data into your daily log as part of the automated systems. This gets you one step closer to a fully automated Quantified Self.
+- Log Creation:
+   - Includes a number of methods by which a daily note/log file can be created automatically each day
+   - Supports the ability to [create daily log files for other days besides today](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Creating-Past-Log-Files)
+   - Supports [additional premade {{fields}} for autoreplacement](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) (e.g. `timestamp`, `dayOfWeek`, `weekNum`)
+   - Supports [more advanced log file naming conventions](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Advanced-File,-Folder-and-Template-Naming) with the `{{date:}}` field (e.g. have yearly subfolders, have daily log+notes simultaneously, have templates for each day of the week)
+
+- Logging:
+   - Supports commands (URI, hotkeys, API) for automated event logging by appending the current daily log with event information
+   - Supports commands (URI, hotkeys, API) for tagged event logging into a specific header inside the daily log
+   - (Future:) Log Chains, a tool to set up a whole series of automated log events to pull data into your daily log as part of the automated systems. This gets you one step closer to a fully automated Quantified Self.
+
+- Daily Log Access:
+   - (Future:) Support for fast access to the daily log file through a variety of means (e.g. URI, shortcuts, hotkeys)
 
 ### More Info
 - **Full documentation can be found on the [plugin's wiki pages](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki)**
