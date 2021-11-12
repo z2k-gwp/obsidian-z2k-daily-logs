@@ -15,7 +15,7 @@
 
 // 3rd Party Imports
 import type { Moment } from "moment";
-
+import { toUnicode } from "punycode";
 
 // Obsidian Imports
 import { App, Plugin, Editor, MarkdownView, Notice, TFile } from "obsidian";
@@ -26,7 +26,12 @@ import { appHasDailyNotesPluginLoaded, getDailyNoteSettings } from "obsidian-dai
 // Internal Plugin Imports
 import { showContextMenu } from "./ui";
 import { DEFAULT_SETTINGS, IZ2KDailyLogsSettings, Z2KDailyLogsSettingTab } from "./settings";
-import { capitalize }  from "./utils";
+import { getAllDailyLogs, getDailyLog, createDailyLog }  from "./dailyLogs";
+import { expandFieldsInFile } from "./fields"
+import { logAutomatedEvent } from "./eventLogging"
+import { }  from "./utils";
+
+
 
 
 // ======================================================================================================
@@ -203,7 +208,7 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 			name: "Validate that Settings are Z2K Compliant",
 			callback: async () => {
 				const currentMoment = (window as any).moment(Date.now());
-				this.cmdValidateZ2KConsistency();
+				this.cmdValidateSettingsAndZ2KConsistency();
 			}
 		});
 
@@ -258,8 +263,7 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 	// cmdCreateZ2KDailyLog
 	/* ------------------------------------------------------------------------------------------------------ */
 	/**
-	 * This function creates a daily note for the day. It uses the settings from the "Daily Notes" core 
-	 * plugin to figure out where to save it. 
+	 * This function creates a daily note for the day.  
 	 * 
 	 * @remarks
 	 * - If the note already exists, it simply returns quietly, passing the file handle to the existing note.
@@ -279,35 +283,38 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 		if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdCreateZ2KDailyLog() - Entered"); }
 
 		// Get the daily note, and if not there, then create it
-
-		/*
 		if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdCreateZ2KDailyLog() - Check for previously created log file for the day."); }
-		const allDailyNotes = getAllDailyNotes();  // Daily Notes routines like to work off of a cache - this fetches the cache
-		let dailyNote = getDailyNote(dateToCreate, allDailyNotes);
+		const allDailyNotes = getAllDailyLogs(dateToCreate);  // Daily Logs routines like to work off of a cache - this fetches the cache
+		let dailyNote = getDailyLog(dateToCreate, allDailyNotes);
 		if (dailyNote == null) {
 			if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdCreateZ2KDailyLog() - Creating new log file for the day."); }
-			dailyNote = await createDailyNote(dateToCreate);
+			dailyNote = await createDailyLog(dateToCreate);
 			if (dailyNote !== undefined) {
+				if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": cmdCreateZ2KDailyLog() - Succesfully created new log file:" + dailyNote.path); }
 				createdDailyNote = true;
 			}
 		}
 
 		// Now flesh out the fields. This saves the file when done.
-		if (dailyNote != null) {
-			if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": createLogOnStartup() - Fleshing out automated fields."); }
-			var success = await this.fleshOutDailyNoteAutomatedFields(dateToCreate,dailyNote);
-		}
-		*/
+		// Scrap this - it is now done in createDailyLog
+		// if (dailyNote != null) {
+		// 	if (this.settings.debugLevel >= 100) { console.log(this.manifest.name + ": createLogOnStartup() - Fleshing out automated fields."); }
+		//	var success = await expandFieldsInFile(dateToCreate,dailyNote, this.settings.generalDateFormatString);
+		// }
 
+        // Append the log file creation into today's daily log.
+		// Reminder: if the user created a previous day's log, then the automated logging of the event is actually on a different log file.
+		// Reminder: just let the function determine whether or not it is enabled, etc.
+		if (createdDailyNote) {
+			logAutomatedEvent("Created a starter daily log file for [[" + dailyNote.basename + "]]");
+		}
 
 		// Reminder:
 		// console.log("Basename: " + dailyNote.basename);	// 2021-10-24
 		// console.log("Name: " + dailyNote.name);			// 2021-10-24.md
 		// console.log("Path: " + dailyNote.path);			// ~Logs/2021/2021-10-24.md
 
-
-		// return dailyNote;
-		return null;
+		return dailyNote;
 	}
 
 
@@ -327,7 +334,7 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 		const { format, folder, template} = this.settings.dailyNotesSettings;
 
 		// TODO: RequiredFolder needs fixing to support YYYY
-		const requiredFormat = "YYYY-MM-DD", requiredFolder = "~Logs/YYYY", requiredTemplate = "~Templates/~Logs - Daily";
+		const requiredFormat = "{{date:YYYY-MM-DD}}", requiredFolder = "~Logs/{{date:YYYY}}", requiredTemplate = "~Templates/~Logs - Daily";
 
 		// Validate Z2K Consistency
 		let errorMessages = "";
@@ -348,8 +355,10 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 		}
 
 		// Validate Folder Exists
+		// toDo();
 
 		// Validate Template File Exists
+		// toDo();
 
 	 }
 
@@ -372,6 +381,7 @@ export default class Z2KDailyLogsPlugin extends Plugin {
 		}
 
 		this.settings.dailyNotesSettings = getDailyNoteSettings();
+		this.settings.dailyNotesSettings.format = "{{date:" + this.settings.dailyNotesSettings.format + "}}";
 
 		new Notice("Success! Settings from the Daily Notes plugin have been imported.");
 		
