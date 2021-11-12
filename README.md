@@ -11,11 +11,11 @@ This [Obsidian](https//obsidian.md) plugin creates a "daily log" file through a 
    - Supports [additional premade {{fields}} for autoreplacement](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Automated-Field-Replacements) (e.g. `timestamp`, `dayOfWeek`, `weekNum`)
    - Supports [more advanced log file naming conventions](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Advanced-File,-Folder-and-Template-Naming) with the `{{date:}}` field (e.g. have yearly subfolders, have daily log+notes simultaneously, have templates for each day of the week)
 
-- **[[Event Logging]]**:
-   - Supports the ability to add logging information three different ways:
-      1. [[Append Logging]] - adding a single line of text at the end of the daily log
-      2. [[Header Logging]] - inserting text into a specific header of the daily log
-      3. [[Field Logging]] - replacing a specific `{{field}}` in the daily log
+- **[Event Logging](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Event-Logging)**:
+   - Supports the ability to [add logging information](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Event-Logging) to the daily log:
+      1. [Append Logging](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Append-Logging) - adding a single line of text at the end of the daily log
+      2. [Header Logging](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Header-Logging) - inserting text into a specific header of the daily log
+      3. [Field Logging](https://github.com/z2k-gwp/obsidian-z2k-daily-logs/wiki/Field-Logging) - replacing a specific `{{field}}` in the daily log
    - Events can be logged via URI commands (e.g. for iOS Shortcuts, scripts), through hotkeys, or through the plugin API
    - (Future:) Support for Log Chains, a tool to set up a whole series of automated log events to pull data into your daily log as part of the automated systems. This gets you one step closer to a fully automated Quantified Self.
 
