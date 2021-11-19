@@ -1,0 +1,5 @@
+## What is the difference between a Daily Note and a Daily Log?
+
+Many people use a daily note to not just hold informational notes, but also data logging for their daily lives. For instance, some Obsidian users use the daily note/log to hold Quantified Self data from their phones, smart watches, the web, and their custom sensors. This data can come from a variety of external apps at any time. The [Z2K System](https://z2k.dev) itself incorporates data logging into its process as one of it primary pillars.
+
+In order for data logging to work, it is useful to have each day's log file to be ready for use at the start of the day, perhaps before you have even had the chance to load Obsidian directly. For instance, if you are logging the weather or your sleep time into your log file automatically in the morning, you'll need the daily log file to be already created and ready to receive the data the moment you wake up.

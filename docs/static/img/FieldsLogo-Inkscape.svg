@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="200"
+   height="200"
+   viewBox="0 0 52.916665 52.916668"
+   version="1.1"
+   id="svg136"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="FieldsLogo-Inkscape.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview138"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="6.2217172"
+     inkscape:cx="79.399302"
+     inkscape:cy="101.33858"
+     inkscape:window-width="2262"
+     inkscape:window-height="1795"
+     inkscape:window-x="6946"
+     inkscape:window-y="60"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs133" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       aria-label="K"
+       id="text12035"
+       style="font-size:9.6px;line-height:1.25;fill:#000000;stroke:none;stroke-width:0.36"
+       transform="matrix(3.013199,0,0,3.9204394,14.738452,-33.956313)">
+      <path
+         d="m 19.881811,17.310436 h -2.207812 l -2.085938,-2.79375 -0.421875,0.510938 v 2.282812 h -1.8 v -6.979688 h 1.8 v 3.159376 l 2.49375,-3.159376 h 2.085938 l -2.728125,3.229688 z"
+         style="font-weight:bold"
+         id="path13570" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:25.4px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.591423"
+       x="0.99741739"
+       y="30.198841"
+       id="text2254"
+       transform="scale(0.95216367,1.0502396)"><tspan
+         sodipodi:role="line"
+         id="tspan2252"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:25.4px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.591423"
+         x="0.99741739"
+         y="30.198841">{{  }}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.6508px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.566271"
+       x="23.509142"
+       y="28.926247"
+       id="text16644"><tspan
+         sodipodi:role="line"
+         id="tspan16642"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.6508px;font-family:Garamond;-inkscape-font-specification:'Garamond, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.566271"
+         x="23.509142"
+         y="28.926247">f</tspan></text>
+  </g>
+</svg>

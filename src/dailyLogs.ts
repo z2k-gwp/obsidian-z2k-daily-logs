@@ -89,7 +89,7 @@ export function getDailyLogPeriodicSettings(date: Moment): IPeriodicNoteSettings
     // Get the Daily Log Settings
     const theDailyLogSettings = getDailyLogSettings();
     if (!(theDailyLogSettings && theDailyLogSettings.dailyNotesSettings)) { 
-      // errro logging is done already - just pass the error up
+      // error logging is done already - just pass the error up
       return null; 
     }
 
